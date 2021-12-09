@@ -1,4 +1,9 @@
-#include "messagebox.c"
+#include <stdlib.h>
+#include <stdio.h>
+
+#pragma once
+
+#include "messagebox.h"
 
 #ifdef _WIN32
     #define _OSNAME "Windows"
