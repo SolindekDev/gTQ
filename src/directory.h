@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <wchar.h>
+#include <tchar.h>
+#include <lmcons.h>
 
 #pragma once
-
-#include "messagebox.h"
-#include "computer.h"
 
 #if defined(_WIN32) || defined(_WIN64)
     #define _OSNAME "Windows"
@@ -13,4 +13,8 @@
     #define _OSNAME "Else"
 #endif
 
+#pragma comment(lib, "user32.lib")
 
+/*
+    Function return a Width of monitor
+*/

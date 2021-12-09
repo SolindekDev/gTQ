@@ -3,17 +3,15 @@
 
 #pragma once
 
-#ifdef _WIN32
+#if defined(_WIN32) || defined(_WIN64)
     #define _OSNAME "Windows"
     #include <windows.h>
-    #include <tchar.h>
-#elif _WIN64
-    #define _OSNAME "Windows"
-    #include <windows.h>
-    #include <tchar.h>
 #else
     #define _OSNAME "Else"
 #endif
+
+#define _UNICODE
+#define UNICODE
 
 #define GTQ_OK                       0x00000000L
 #define GTQ_OKCANCEL                 0x00000001L
@@ -59,6 +57,9 @@
 
 static int consoleHide = 0;
 
+/*
+    Function hidde a console window
+*/
 void hideConsole() {
     consoleHide = 1;
     HWND window;
@@ -69,6 +70,9 @@ void hideConsole() {
     return;
 }
 
+/*
+    Function show a message box
+*/
 void showMessageBox(char* title, char* message, UINT typeGTQ) {
     if (consoleHide == 0) {
         hideConsole();
