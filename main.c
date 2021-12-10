@@ -19,5 +19,5 @@ int main(int argc, char **argv) {
     // printf("Total Memory: %dgb", freeMem);
 
     // printf("Cpu speed: %luMHz", getCpuSpeed());
-    getUptime();
+    
 }
