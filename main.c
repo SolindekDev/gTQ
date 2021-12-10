@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv) {
     // printf("Windows Version: %d\n", GetWindowsVersion());
-    
+
     // printf("Memory Usage: %d%%", memoryUsePercentage());
 
     // int freeMem = freeDiskMemory(GTQ_MEM_MB, L"C:\\");
@@ -11,4 +11,13 @@ int main(int argc, char **argv) {
 
     // int freeMem = freeDiskMemory(GTQ_MEM_GB, L"C:\\");
     // printf("Free Memory: %dgb", freeMem);
+
+    // int freeMem = totalDiskMemory(GTQ_MEM_GB, L"C:\\");
+    // printf("Total Memory: %dgb", freeMem);
+
+    // int freeMem = occupiedDiskMemory(GTQ_MEM_GB, L"C:\\");
+    // printf("Total Memory: %dgb", freeMem);
+
+    // printf("Cpu speed: %luMHz", getCpuSpeed());
+    getUptime();
 }

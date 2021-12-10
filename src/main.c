@@ -5,6 +5,7 @@
 
 #include "messagebox.h"
 #include "computer.h"
+#include "time.h"
 
 #if defined(_WIN32) || defined(_WIN64)
     #define _OSNAME "Windows"

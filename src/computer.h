@@ -235,3 +235,69 @@ int freeDiskMemory(UINT convertMemory, short unsigned int * diskPlace) {
     }
     
 }
+
+/*
+    Total disk space 
+
+    Arguments:
+        1 - GTQ_MEM_GB - To convert memory to GB / GTQ_MEM_MB - To convert memory to MB
+        2 - Disk place - you can write here "C:\\"
+*/
+int totalDiskMemory(UINT convertMemory, short unsigned int * diskPlace) {
+    unsigned __int64 freeCall,
+                     total,
+                     free;
+
+    int r = GetDiskFreeSpaceExW(diskPlace, (PULARGE_INTEGER) &freeCall, (PULARGE_INTEGER) &total, (PULARGE_INTEGER) &free);
+
+    if (r == 0) {
+        printf("Failed to get total disk space %ld", GetLastError());
+        return 0;
+    }	
+
+    int mb = total / (1024 * 1024);
+
+    switch (convertMemory) {
+        case GTQ_MEM_GB:
+            return mb / 1024;
+        case GTQ_MEM_MB:
+            return total / (1024*1024);
+        case GTQ_MEM_NC:
+            return total;
+    }
+    
+}
+
+/* 
+    Get cpu speed in MHz
+*/
+DWORD getCpuSpeed() {
+    DWORD BufSize = MAX_PATH;
+    DWORD mhz = MAX_PATH;
+    HKEY key;
+
+    long r = RegOpenKeyExW(HKEY_LOCAL_MACHINE, L"HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0", 0, KEY_READ, &key);
+
+    if (r != ERROR_SUCCESS) {
+        printf("RegOpenKeyExW() failed %ld", GetLastError());
+        return 1;
+    }
+
+    r = RegQueryValueExW(key, L"~MHz", NULL, NULL, (LPBYTE) &mhz, &BufSize);
+
+    if (r != ERROR_SUCCESS) {
+
+        printf("RegQueryValueExW() failed %ld", GetLastError());
+        return 1;
+    }
+
+    r = RegCloseKey(key);
+
+    if (r != ERROR_SUCCESS) {
+
+        printf("Failed to close registry handle %ld", GetLastError());
+        return 1;
+    }
+    
+    return mhz;
+}
