@@ -98,7 +98,7 @@ wchar_t* computerName() {
     5 - Windows Vista
     6 - Windows XP
 */
-int GetWindowsVersion() {
+int getWindowsVersion() {
     if (IsWindows10OrGreater()) {
         return 1;
     } else if (IsWindows8Point1OrGreater()) {
