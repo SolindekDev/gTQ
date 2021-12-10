@@ -3,5 +3,12 @@
 
 int main(int argc, char **argv) {
     // printf("Windows Version: %d\n", GetWindowsVersion());
+    
     // printf("Memory Usage: %d%%", memoryUsePercentage());
+
+    // int freeMem = freeDiskMemory(GTQ_MEM_MB, L"C:\\");
+    // printf("Free Memory: %dmb", freeMem);
+
+    // int freeMem = freeDiskMemory(GTQ_MEM_GB, L"C:\\");
+    // printf("Free Memory: %dgb", freeMem);
 }

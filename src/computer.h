@@ -14,6 +14,10 @@
     #define _OSNAME "Else"
 #endif
 
+#define GTQ_MEM_MB 0x0000020
+#define GTQ_MEM_GB 0x0000021
+#define GTQ_MEM_NC 0x0000022
+
 #pragma comment(lib, "user32.lib")
 
 /*
@@ -198,4 +202,36 @@ int memoryFreeVirutal() {
     }
     
     return mem.ullAvailVirtual;
+}
+
+/*
+    Free disk space 
+
+    Arguments:
+        1 - GTQ_MEM_GB - To convert memory to GB / GTQ_MEM_MB - To convert memory to MB
+        2 - Disk place - you can write here "C:\\"
+*/
+int freeDiskMemory(UINT convertMemory, short unsigned int * diskPlace) {
+    unsigned __int64 freeCall,
+                     total,
+                     free;
+
+    int r = GetDiskFreeSpaceExW(diskPlace, (PULARGE_INTEGER) &freeCall, (PULARGE_INTEGER) &total, (PULARGE_INTEGER) &free);
+
+    if (r == 0) {
+        printf("Failed to get free disk space %ld", GetLastError());
+        return 0;
+    }	
+
+    int mb = freeCall / (1024 * 1024);
+
+    switch (convertMemory) {
+        case GTQ_MEM_GB:
+            return mb / 1024;
+        case GTQ_MEM_MB:
+            return freeCall / (1024*1024);
+        case GTQ_MEM_NC:
+            return freeCall;
+    }
+    
 }
