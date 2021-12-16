@@ -4,6 +4,7 @@
         "computer.h": "c",
         "messagebox.h": "c",
         "windows.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "xlocale": "c"
     }
 }

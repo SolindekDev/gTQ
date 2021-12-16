@@ -20,5 +20,14 @@ int main(int argc, char **argv) {
 
     // printf("Cpu speed: %luMHz", getCpuSpeed());
     
-    playSound("sample.wav");
+    // playSound("sample.wav");
+
+    while (1) {
+        int i = keyGet(KEY_F1);
+        if (i == KEY_CLICKED) {
+            printf("F1 is pressed\n");
+        } else {
+            printf("F1 is not pressed\n");
+        }
+    }
 }

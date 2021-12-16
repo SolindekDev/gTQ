@@ -7,6 +7,7 @@
 #include "computer.h"
 #include "time.h"
 #include "sound.h"
+#include "keyboard.h"
 
 #if defined(_WIN32) || defined(_WIN64)
     #define _OSNAME "Windows"
