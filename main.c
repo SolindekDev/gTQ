@@ -20,4 +20,5 @@ int main(int argc, char **argv) {
 
     // printf("Cpu speed: %luMHz", getCpuSpeed());
     
+    playSound("sample.wav");
 }

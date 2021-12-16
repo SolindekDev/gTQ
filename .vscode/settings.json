@@ -3,6 +3,7 @@
         "tchar.h": "c",
         "computer.h": "c",
         "messagebox.h": "c",
-        "windows.h": "c"
+        "windows.h": "c",
+        "stdlib.h": "c"
     }
 }
